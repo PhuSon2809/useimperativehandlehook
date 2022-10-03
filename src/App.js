@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef } from "react";
+import "./App.css";
+import GlobalStyles from "./GlobalStyles";
+import Heading from "./Heading";
+import Paragraph from "./Paragraph";
+import Video from "./Video";
 
 function App() {
+  const videoRef = useRef();
+
+  useEffect(() => {
+    console.log(videoRef.current);
+  });
+
+  const handlePlay = () => {
+    videoRef.current.play();
+  };
+
+  const hanlepause = () => videoRef.current.pause();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // Sử dụng css global khi dùng module ko css đc hco tag name
+    <GlobalStyles> 
+      <div className="App">
+        <h1>useImperativeHandle</h1>
+        <Video ref={videoRef} />
+        <button onClick={handlePlay}>Play</button>
+        <button onClick={hanlepause}>Pause</button>
+
+        <br />
+        <Heading />
+        <Paragraph />
+      </div>
+    </GlobalStyles>
   );
 }
 
 export default App;
+
+//Developments: npm start / yarn start -> CSS internal
+
+//Production: npm run buil / yarn run buil -> CSS external

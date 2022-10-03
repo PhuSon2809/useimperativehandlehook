@@ -1,0 +1,18 @@
+.paragraph {
+  color: red;
+}
+
+.btn{
+    color: red;
+}
+
+.green{
+    background-color: aqua;
+}
+
+.primary{
+    background-color: blue;
+}
+
+/* //Module ko dùng tag name để css đc */
+/* Đặt tên class: VD: headingRed */
